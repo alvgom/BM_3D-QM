@@ -8,7 +8,7 @@ function EmptySpaceDistance(aImarisApplication)
 %
 %    <CustomTools>
 %      <Menu>
-%        <Submenu name="quantitativeBM">
+%        <Submenu name="BM_3D-QM">
 %          <Item name="Empty Space Distance" icon="Matlab">
 %            <Command>MatlabXT::EmptySpaceDistance(%i)</Command>
 %          </Item>

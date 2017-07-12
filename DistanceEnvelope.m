@@ -1,4 +1,8 @@
-% Collect data
+% Creates an envelope with the CDF of empty space distances created in the 
+% EmptySpaceDistance ImarisXT
+
+% Author: Alvaro Gomariz
+
 usr_continue=1;
 count=0;
 while usr_continue

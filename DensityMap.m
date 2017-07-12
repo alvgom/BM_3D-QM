@@ -8,7 +8,7 @@ function DensityMap(aImarisApplication)
 %
 %    <CustomTools>
 %      <Menu>
-%        <Submenu name="quantitativeBM">
+%        <Submenu name="BM_3D-QM">
 %          <Item name="Density Map" icon="Matlab">
 %            <Command>MatlabXT::DensityMap(%i)</Command>
 %          </Item>

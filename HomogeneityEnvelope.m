@@ -1,4 +1,8 @@
-% Collect data
+% Creates an envelope with the CDF of empty space distances and distances 
+% from cells created in the HomogeneityTest ImarisXT
+
+% Author: Alvaro Gomariz
+
 usr_continue=1;
 count=0;
 while usr_continue

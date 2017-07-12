@@ -8,7 +8,7 @@ function VesselsRatio(aImarisApplication)
 %
 %    <CustomTools>
 %      <Menu>
-%        <Submenu name="quantitativeBM">
+%        <Submenu name="BM_3D-QM">
 %          <Item name="Ratio of Vessels" icon="Matlab">
 %            <Command>MatlabXT::VesselsRatio(%i)</Command>
 %          </Item>

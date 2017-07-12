@@ -8,7 +8,7 @@ function SegmentVessels(aImarisApplicationID)
 %
 %    <CustomTools>
 %      <Menu>
-%        <Submenu name="quantitativeBM">
+%        <Submenu name="BM_3D-QM">
 %          <Item name="Vessels Segmentation" icon="Matlab">
 %            <Command>MatlabXT::SegmentVessels(%i)</Command>
 %          </Item>

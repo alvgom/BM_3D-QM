@@ -8,7 +8,7 @@ function HomogeneityTest(aImarisApplication)
 %
 %    <CustomTools>
 %      <Menu>
-%        <Submenu name="quantitativeBM">
+%        <Submenu name="BM_3D-QM">
 %          <Item name="Homogeneity Test" icon="Matlab">
 %            <Command>MatlabXT::HomogeneityTest(%i)</Command>
 %          </Item>

@@ -8,7 +8,7 @@ function DAPImask(aImarisApplication)
 %
 %    <CustomTools>
 %      <Menu>
-%        <Submenu name="quantitativeBM">
+%        <Submenu name="BM_3D-QM">
 %          <Item name="DAPI mask" icon="Matlab">
 %            <Command>MatlabXT::DAPImask(%i)</Command>
 %          </Item>

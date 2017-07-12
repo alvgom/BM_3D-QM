@@ -8,7 +8,7 @@ function CellDensity(aImarisApplication)
 %
 %    <CustomTools>
 %      <Menu>
-%        <Submenu name="quantitativeBM">
+%        <Submenu name="BM_3D-QM">
 %          <Item name="Cell Density" icon="Matlab">
 %            <Command>MatlabXT::CellDensity(%i)</Command>
 %          </Item>
