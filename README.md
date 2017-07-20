@@ -1,7 +1,7 @@
 # BM_3D-QM
 Code used for image processing, data analysis and visualization of 3D bone marrow images.   
 Part of the code is written as ImarisXT written in MATLAB, which are plugins for Imaris software that can be run by following these steps in Imaris:  
-1. Click on the edit tab.
+1. Click on the file tab.
 2. Click on preferences.
 3. Click on CustomTools.
 4. In the XTensions Folder box, click on Add.
