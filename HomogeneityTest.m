@@ -34,8 +34,8 @@ mask_vessels = brid.useMask_usr('Vessels');
 Cells = brid.constructSpots([],mask_dapi);
 
 % Distance transform to vessels
-[distVesselsAll,scl_resize] = brid.imresize3D_custom(double(mask_vessels),'um','cubic');
-[mask_dapi_um,~] = brid.imresize3D_custom(double(mask_dapi),'um','cubic');
+[distVesselsAll,scl_resize] = brid.imresize3D_custom(double(mask_vessels),'iso_max','cubic');
+[mask_dapi_um,~] = brid.imresize3D_custom(double(mask_dapi),'iso_max','cubic');
 dist3d = bwdist_full(distVesselsAll>0.5)/scl_resize;
 distVesselsPos=dist3d;
 distVesselsPos(dist3d<0 | mask_dapi_um<0.5) = nan;
@@ -44,7 +44,8 @@ distVesselsPos(dist3d<0 | mask_dapi_um<0.5) = nan;
 distVesselsLim = dist3d;
 distVesselsLim(dist3d<0) = 0;
 distVesselsLim(mask_dapi_um<1) = nan;
-dist_cell2vessels = Cells.evalDTspots(distVesselsLim,save_dir);
+distVesselsLimVox = brid.imresize3D_custom(distVesselsLim,'voxel','cubic');
+dist_cell2vessels = Cells.evalDTspots(distVesselsLimVox,save_dir);
 
 % Homogeneity test
 Cells.CSRtestDT(distVesselsPos,dist_cell2vessels,save_dir);

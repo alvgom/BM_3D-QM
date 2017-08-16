@@ -32,8 +32,7 @@ elseif isequal(use_mask,'Yes. Create')
             segm_init = questdlg(sque_sinu,'Question',...
                 'Option 1', 'Option 2','Option 2');
             if isequal(segm_init,'Option 1') %TODO
-                error('Function not yet implemented')
-                mask_init = SegmVesselsWall(vVol);
+                mask = morphoVesselsThr(vVol);
             elseif isequal(segm_init,'Option 2')
                 vSurf = this.GetObjects('ObjectType','surface','SelectObject',1);
                 vSurf = vSurf{1};
@@ -41,19 +40,14 @@ elseif isequal(use_mask,'Yes. Create')
                 mask = morphoVessels(mask_init);
             end
     end
-    move2Imaris = questdlg('Do you want to transfer the mask to Imaris',...
-        'Update parameters',...
-        'Yes','No','No');
-    if isequal(move2Imaris,'Yes')
-        switch mask_name
-            case 'DAPI'
-                mask_color = [0 1 1 0];
-            case 'Vessels'
-                mask_color = [1 0 0 0];
-            otherwise
-                mask_color = [1 1 1 0];
-        end
-        nChannel_mask = this.SetNewChannel('ChannelName',[mask_name ' Mask'],'ChannelColor',mask_color);
-        this.SetVolume(mask,nChannel_mask);
+    switch mask_name
+        case 'DAPI'
+            mask_color = [0 1 1 0];
+        case 'Vessels'
+            mask_color = [1 0 0 0];
+        otherwise
+            mask_color = [1 1 1 0];
     end
+    nChannel_mask = this.SetNewChannel('ChannelName',[mask_name ' Mask'],'ChannelColor',mask_color);
+    this.SetVolume(mask,nChannel_mask);
 end

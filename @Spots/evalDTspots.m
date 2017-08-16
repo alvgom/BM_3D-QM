@@ -4,7 +4,7 @@ disp_fig = 1;
 if nargin<3
     disp_fig = 0;
 end
-X =round(this.X_um0);
+X =round(this.X_voxel0);
 if size(X,2) == 3
     for dcc = 1:size(X,1)
         dist_pt2str(dcc) = maskDist(X(dcc,1),X(dcc,2),X(dcc,3));
@@ -57,7 +57,8 @@ if disp_fig
     imshow(sum(mask,3)',[])
     hold on
     if use_cont
-        this.maskContour_um
+%         this.maskContour_um
+        contour(max(this.mask,[],3)',1,'Color','y','LineWidth',2)
     end
     scatter(X(:,1),X(:,2),mdist,'r','filled')
     saveas(h3,[complete_save_dir 'overlay_bw.png']);
@@ -69,7 +70,8 @@ if disp_fig
     imshow(sum(mask,3)',[])
     hold on
     if use_cont
-        this.maskContour_um
+        contour(max(this.mask,[],3)',1,'Color','y','LineWidth',2)
+%         this.maskContour_um
     end
     freezeColors
     scatter(X(:,1),X(:,2),mdist,distSpots,'filled')
