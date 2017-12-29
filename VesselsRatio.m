@@ -29,6 +29,7 @@ brid = ImarisDataSet('ImarisBridge',aImarisApplication);
 % DAPI and vessels masks
 maskDAPI = brid.useMask_usr('DAPI');
 mask_vessels = brid.useMask_usr('Vessels');
+mask_vessels = mask_vessels.*maskDAPI;
 
 % Statistics
 volume_dapi_um = sum(maskDAPI(:))*(brid.psize(1)*brid.psize(2)*brid.psize(3));
