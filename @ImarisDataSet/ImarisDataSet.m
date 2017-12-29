@@ -89,21 +89,13 @@ classdef ImarisDataSet
         out_val = askUserValue(inst_message,init_val)
         
         function aImarisApplication = ImarisBridge
-            bridFound = 0;
-            javaFile_try = {...
-                'C:\Program Files\Bitplane\Imaris x64 8.3.1\XT\matlab\ImarisLib.jar';...
-                'C:\Program Files\Bitplane\Imaris x64 8.4.1\XT\matlab\ImarisLib.jar';...
-                'C:\Program Files\Bitplane\Imaris x64 8.3.0\XT\matlab\ImarisLib.jar';};
-            for i = 1:length(javaFile_try)
-                if exist(javaFile_try{i},'file')
-                    javaFile = javaFile_try{i};
-                    bridFound = 1;
-                    break;
-                end
-            end
-            if ~bridFound
+            fold_init = 'C:\Program Files\Bitplane';
+            fold_iVer = dir(fullfile(fold_init, 'Imaris*'));
+            if isempty(fold_iVer)
                 [FileName_ss,PathName_ss] = uigetfile('*', 'Select the ImarisLib.jar file (usually in the Imaris installation directory)');
                 javaFile = [PathName_ss FileName_ss];
+            else
+                javaFile = fullfile(fold_init,fold_iVer(1).name,'XT\matlab\ImarisLib.jar');
             end
             javaaddpath(javaFile);
             vImarisLib = ImarisLib;
@@ -112,7 +104,6 @@ classdef ImarisDataSet
             if isempty(aImarisApplication)
                 warning('It is not possible to set the Imaris-MATLAB bridge. Try restarting the computer');
             end
-            
         end
     end
     
