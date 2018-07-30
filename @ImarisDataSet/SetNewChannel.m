@@ -33,18 +33,19 @@ function newChannel = SetNewChannel(this,varargin)
 
 % Author: Alvaro Gomariz Carrillo
 
-newChannel = this.aDataSet.GetSizeC;
-this.aDataSet.SetSizeC(newChannel+1);
+newChannel = this.aImarisApplication.GetDataSet.GetSizeC;
+this.aImarisApplication.GetDataSet.SetSizeC(newChannel+1);
 for i=1:2:length(varargin)
     switch varargin{i}
         case 'ChannelColor'
             RGBAcolor = varargin{i+1};
             ColorImaris = this.RGBAtoImaris(RGBAcolor);
-            this.aDataSet.SetChannelColorRGBA(newChannel,ColorImaris);
+            this.aImarisApplication.GetDataSet.SetChannelColorRGBA(newChannel,ColorImaris);
         case 'ChannelName'
             ChannelName = varargin{i+1};
-            this.aDataSet.SetChannelName(newChannel,ChannelName);
+            this.aImarisApplication.GetDataSet.SetChannelName(newChannel,ChannelName);
         otherwise
             error(['Unrecognized Command:' varargin{i}]);
     end
 end
+this.aDataSet = this.aImarisApplication.GetDataSet;

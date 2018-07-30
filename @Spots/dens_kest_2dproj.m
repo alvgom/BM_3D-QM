@@ -61,7 +61,7 @@ sca = 0.002;
 scb = 40;
 scatter_psize = scb*exp(-sca*length(x));
 if scatter_psize >1e-6
-    if scatter_psize < 1
+    if scatter_psize < 10
         scatter_psize = 1;
     else
         scatter_psize = 5;

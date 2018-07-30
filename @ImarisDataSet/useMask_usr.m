@@ -16,9 +16,9 @@ elseif isequal(use_mask,'Yes. Select')
 elseif isequal(use_mask,'No')
     switch mask_name
         case 'Vessels'
-            mask = zeros(this.imsize);
+            mask = zeros(this.imsize,'uint8');
         otherwise
-            mask = ones(this.imsize);
+            mask = ones(this.imsize,'uint8');
     end
 elseif isequal(use_mask,'Yes. Create')
     mask_message = ['Please select the channel with ' mask_name ' signal'];

@@ -9,7 +9,7 @@ function dens_pdf = dens_kest_voxel3D(this, varargin)
 % inputs
 
 X = this.X_voxel0;
-mask = this.mask;
+mask = uint8(this.mask);
 psizes = this.psize;
 
 kernel_ext_factor = 4;
@@ -37,7 +37,7 @@ Sigma_z = Sigma(2);
 
 kernel_ext_xy = kernel_ext_factor*round(Sigma_xy);
 kernel_ext_z = kernel_ext_factor*round(Sigma_z);
-gkernel = zeros(kernel_ext_xy*2+1,kernel_ext_xy*2+1,kernel_ext_z*2+1);
+gkernel = zeros(kernel_ext_xy*2+1,kernel_ext_xy*2+1,kernel_ext_z*2+1, 'uint8');
 kcenter_xy = kernel_ext_xy+1;
 kcenter_z = kernel_ext_z+1;
 N = length(x);
@@ -52,7 +52,7 @@ for i = 1:size(gkernel,1)
 end
 gkernel = gkernel./max(gkernel(:));
 % mask_MIP = max(mask,[],3);
-dens_est = zeros(size(mask));
+dens_est = zeros(size(mask),'uint8');
 normal_sumkernel = sum(gkernel(:));
 
 count_error = 0;
@@ -101,7 +101,7 @@ for pp = 1:N
         reduced_kernel = gkernel(klb1:kub1,klb2:kub2,klb3:kub3);
         aux_dens = dens_est(lb1:ub1,lb2:ub2,lb3:ub3);
         if isequal(size(aux_dens),size(reduced_kernel))
-            kernel_mask = reduced_kernel.*double(mask(lb1:ub1,lb2:ub2,lb3:ub3));
+            kernel_mask = reduced_kernel.*mask(lb1:ub1,lb2:ub2,lb3:ub3);
             corr_factor = sum(kernel_mask(:))/normal_sumkernel;
             dens_est(lb1:ub1,lb2:ub2,lb3:ub3) = aux_dens + kernel_mask/corr_factor;
             %             dens_est(lb1:ub1,lb2:ub2,lb3:ub3) = aux_dens + reduced_kernel/max(reduced_kernel(:));
@@ -113,7 +113,7 @@ end
 close(h)
 %Apply mask and normalize
 % dens_pdf = double(mask).*(dens_est/max(dens_est(:)));
-dens_pdf = double(mask).*dens_est;
+dens_pdf = uint8(mask).*dens_est;
 % disp(count_error);
 
 if disp_save_fig

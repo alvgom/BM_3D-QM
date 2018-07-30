@@ -1,13 +1,13 @@
 function maskDAPI = morphoDAPI(vVol,param_in,do3D)
 
 if nargin<2
-    prompt = {'Enter sigma for Gaussian filter:','Enter threshold:','Enter opening size:','Enter closing size:', 'Enter maximum area to be filled:', 'Enter maximum area to be removed:'};
+    prompt = {'Enter sigma for Gaussian filter:','Enter threshold:','Enter closing size:','Enter opening size:', 'Enter maximum area to be filled:', 'Enter maximum area to be removed:'};
     thres_val = 20;
     close_size = 5;
-    open_size = 5;
+    open_size = 15;
     sigma_Gaus = 5;
-    fill_area = 8000;
-    remove_area = 50000;
+    fill_area = 500000;
+    remove_area = 100000;
     defaultans = {num2str(sigma_Gaus),num2str(thres_val),num2str(open_size),num2str(close_size),num2str(fill_area),num2str(remove_area)};    
     
     do_bc = questdlg('Do you want to use border correction? (slower)','Question',...

@@ -71,7 +71,9 @@ for i = 0 : (nChildren - 1)
     end
 end
 if nObjs == 0
-    error('The required object does not exist in Imaris');
+    warning('The required object does not exist in Imaris');
+    vObjs = [];
+    nameObjs = [];
 elseif selectObj
     for j = 1:nObjs
         Obj_aux = Objs{j};

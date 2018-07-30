@@ -36,8 +36,8 @@ move2Imaris = questdlg('Do you want to transfer the empty space distance image t
     'Yes','No','No');
 
 % Distance transform to vessels
-[mask_vessels_um,scl_resize] = brid.imresize3D_custom(double(mask_vessels),'iso_max','nearest');
-[mask_dapi_um,~] = brid.imresize3D_custom(double(mask_dapi),'iso_max','nearest');
+[mask_vessels_um,scl_resize] = brid.imresize3D_custom(double(mask_vessels),'iso_min','nearest');
+[mask_dapi_um,~] = brid.imresize3D_custom(double(mask_dapi),'iso_min','nearest');
 dist3d = bwdist_full(mask_vessels_um>0.5)/scl_resize;
 dist3d(dist3d<0 | mask_dapi_um<0.5) = nan;
 save(fullfile(save_dir,'EmptySpaceDistance.mat'),'dist3d','-v7.3');

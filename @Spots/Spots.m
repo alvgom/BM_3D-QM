@@ -86,7 +86,7 @@ classdef Spots < matlab.mixin.Copyable
         end
         
         function imExtendsLim(this)
-            exc_pos_aux = round(this.X_um_rw)<repmat(this.aExtendMin,size(this.X_um_rw,1),1) | round(this.X_um_rw)>repmat(this.aExtendMax,size(this.X_um_rw,1),1);
+            exc_pos_aux = this.X_um_rw<repmat(this.aExtendMin,size(this.X_um_rw,1),1) | this.X_um_rw>repmat(this.aExtendMax,size(this.X_um_rw,1),1);
             pos_outbound = ~(sum(exc_pos_aux,2)>0);
             this.X_um_rw = this.X_um_rw(pos_outbound,:);
         end
